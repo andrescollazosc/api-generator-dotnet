@@ -1,0 +1,17 @@
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/bin/Debug/net7.0/ApiGenerator.DotNet
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/bin/Debug/net7.0/ApiGenerator.DotNet.deps.json
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/bin/Debug/net7.0/ApiGenerator.DotNet.runtimeconfig.json
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/bin/Debug/net7.0/ApiGenerator.DotNet.dll
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/bin/Debug/net7.0/ApiGenerator.DotNet.pdb
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/bin/Debug/net7.0/Spectre.Console.dll
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ApiGenerator.DotNet.csproj.AssemblyReference.cache
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ApiGenerator.DotNet.GeneratedMSBuildEditorConfig.editorconfig
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ApiGenerator.DotNet.AssemblyInfoInputs.cache
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ApiGenerator.DotNet.AssemblyInfo.cs
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ApiGenerator.DotNet.csproj.CoreCompileInputs.cache
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ApiGenerator.DotNet.csproj.CopyComplete
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ApiGenerator.DotNet.dll
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/refint/ApiGenerator.DotNet.dll
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ApiGenerator.DotNet.pdb
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ApiGenerator.DotNet.genruntimeconfig.cache
+/Users/andrescollazos/Andres Collazos/git/ApiGenerator/ApiGenerator/ApiGenerator.DotNet/obj/Debug/net7.0/ref/ApiGenerator.DotNet.dll
