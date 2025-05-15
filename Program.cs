@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using ApiGenerator.DotNet.Common;
+using ApiGenerator.DotNet.Templates;
 using Spectre.Console;
 
 public class Program
@@ -23,26 +24,9 @@ public class Program
         Directory.SetCurrentDirectory(solutionPath);
 
         Console.WriteLine();
-        AnsiConsole.MarkupLine($"[blue]📁  Creating project:[/] [yellow]{projectName}[/]");
-        // Create solution
-        RunCommand($"dotnet new sln -n {projectName}", solutionPath);
-
-        // Create projects
-        RunCommand($"dotnet new webapi -n {apiProjectName}", solutionPath);
-        RunCommand($"dotnet new classlib -n {coreProjectName}", solutionPath);
-        RunCommand($"dotnet new classlib -n {dataProjectName}", solutionPath);
-
-        // Add projects to solution
-        RunCommand($"dotnet sln add {apiProjectName}/{apiProjectName}.csproj", solutionPath);
-        RunCommand($"dotnet sln add {coreProjectName}/{coreProjectName}.csproj", solutionPath);
-        RunCommand($"dotnet sln add {dataProjectName}/{dataProjectName}.csproj", solutionPath);
-
-        // Add Core reference to API
-        RunCommand($"dotnet add {apiProjectName}/{apiProjectName}.csproj reference {coreProjectName}/{coreProjectName}.csproj", solutionPath);
-        RunCommand($"dotnet add {apiProjectName}/{apiProjectName}.csproj reference {dataProjectName}/{dataProjectName}.csproj", solutionPath);
-
-        // Add Core reference to Data
-        RunCommand($"dotnet add {dataProjectName}/{dataProjectName}.csproj reference {coreProjectName}/{coreProjectName}.csproj", solutionPath);
+        
+        var template = new ArchitectureTemplate(projectName, solutionPath, apiProjectName, coreProjectName, dataProjectName);
+        template.CreateScaffold();
         
         AnsiConsole.MarkupLine("[green]✅  Solution created successfully![/]");
         
@@ -88,59 +72,8 @@ public class Program
         
         var versionArgument = string.IsNullOrEmpty(version) ? "" : $"--version {version}";
         
-        RunCommand($"dotnet add {project}/{project}.csproj package {packageName} {versionArgument}", workingDirectory);
-    }
-
-    private static void RunCommand(string command, string workingDirectory)
-    {
-        string shell, shellArgs;
-
-        if (OperatingSystem.IsWindows())
-        {
-            shell = "cmd.exe";
-            shellArgs = $"/c {command}";
-        }
-        else
-        {
-            shell = "/bin/bash";
-            shellArgs = $"-c \"{command}\"";
-        }
-        
-        var startInfo = new ProcessStartInfo
-        {
-            FileName = shell,
-            Arguments = shellArgs,
-            WorkingDirectory = workingDirectory,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
-        
-        AnsiConsole.MarkupLine($"[blue]→ Running:[/] [yellow]{command}[/]");
-
-        using var process = new Process();
-        process.StartInfo = startInfo;
-        process.Start();
-
-        var output = process.StandardOutput.ReadToEnd();
-        var error = process.StandardError.ReadToEnd();
-
-        process.WaitForExit();
-
-        if (!string.IsNullOrEmpty(output))
-            AnsiConsole.MarkupLine($"[green]{EscapeMarkup(output)}[/]");
-        if (!string.IsNullOrEmpty(error))
-            AnsiConsole.MarkupLine($"[red]{EscapeMarkup(error)}[/]");
-    }
-    
-    private static string EscapeMarkup(string input)
-    {
-        return input.Replace("[", "[[").Replace("]", "]]");
+        Executables.RunCommand($"dotnet add {project}/{project}.csproj package {packageName} {versionArgument}", workingDirectory);
     }
     
 }
-
-
-
 
