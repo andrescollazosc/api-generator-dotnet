@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiGenerator.DotNet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b71eaa4034984ee11627b1ede50fb6f4dad9305a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiGenerator.DotNet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiGenerator.DotNet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
