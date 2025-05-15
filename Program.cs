@@ -7,6 +7,7 @@ public class Program
     {
         var projectName = AnsiConsole.Ask<string>("[green]Enter solution name:[/]");
         var serviceName = AnsiConsole.Ask<string>("[green]Please, enter the service name:[/]");
+        var basePath = AnsiConsole.Ask<string>("[green]Please, enter a path:[/]");
         
         projectName = projectName.Replace(" ", "");
         serviceName = serviceName.Replace(" ", "");
@@ -16,7 +17,6 @@ public class Program
         var coreProjectName = $"{structureProjectName}.Core";
         var dataProjectName = $"{structureProjectName}.Data";
         
-        var basePath = AnsiConsole.Ask<string>("[green]Please, enter a path:[/]");
         var solutionPath = Path.Combine(basePath, projectName);
 
         Directory.CreateDirectory(solutionPath);
