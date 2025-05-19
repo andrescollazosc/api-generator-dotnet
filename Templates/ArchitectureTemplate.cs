@@ -1,4 +1,6 @@
 using ApiGenerator.DotNet.Common;
+using ApiGenerator.DotNet.Common.Helpers;
+using Spectre.Console;
 
 namespace ApiGenerator.DotNet.Templates;
 
@@ -44,4 +46,24 @@ public class ArchitectureTemplate
         // Add Core reference to Data
         Executables.RunCommand($"dotnet add {_dataProjectName}/{_dataProjectName}.csproj reference {_coreProjectName}/{_coreProjectName}.csproj", _solutionPath);
     }
+    
+    public void CreateCoreProjectStructure(string workingDirectory, string projectName, string serviceName)
+    {
+        AnsiConsole.MarkupLine($"[blue]🛠️\n  Creating Core project structure[/]");
+        var coreProjectPath = Path.Combine(workingDirectory, projectName);
+        
+        var class1Path = Path.Combine(coreProjectPath, "Class1.cs");
+        if (File.Exists(class1Path))
+        {
+            File.Delete(class1Path);
+            AnsiConsole.MarkupLine("[yellow]✔ Class1.cs was deleted[/]");
+        }
+
+        FileSystemHelper.CreateFolder(coreProjectPath, serviceName);
+        FileSystemHelper.CreateFolder(Path.Combine(coreProjectPath, serviceName), "Models");
+        FileSystemHelper.CreateFolder(Path.Combine(coreProjectPath, serviceName), "Services");
+        FileSystemHelper.CreateFolder(Path.Combine(coreProjectPath, serviceName), "Repositories");
+        FileSystemHelper.CreateFolder(Path.Combine(coreProjectPath, serviceName), "Validators");
+    }
+    
 }
