@@ -1,5 +1,7 @@
 using ApiGenerator.DotNet.Common;
 using ApiGenerator.DotNet.Common.Helpers;
+using ApiGenerator.DotNet.Scaffolding;
+using Humanizer;
 using Spectre.Console;
 
 namespace ApiGenerator.DotNet.Templates;
@@ -62,8 +64,33 @@ public class ArchitectureTemplate
         FileSystemHelper.CreateFolder(coreProjectPath, serviceName);
         FileSystemHelper.CreateFolder(Path.Combine(coreProjectPath, serviceName), "Models");
         FileSystemHelper.CreateFolder(Path.Combine(coreProjectPath, serviceName), "Services");
+        FileSystemHelper.CreateFolder(Path.Combine(coreProjectPath, $"{serviceName}/Services"), "Impl");
         FileSystemHelper.CreateFolder(Path.Combine(coreProjectPath, serviceName), "Repositories");
         FileSystemHelper.CreateFolder(Path.Combine(coreProjectPath, serviceName), "Validators");
+
+        GenerateCoreArtifacts(coreProjectPath, projectName, serviceName);
+    }
+    
+    private static void GenerateCoreArtifacts(string coreProjectPath, string projectName, string serviceName)
+    {
+        var modelNameSpace = $"{projectName}.{serviceName}.Models";
+        var interfaceServiceNameSpace = $"{projectName}.{serviceName}.Services";
+        var serviceNameSpace = $"{projectName}.{serviceName}.Services.Impl";
+        var repositoryNameSpace = $"{projectName}.{serviceName}.Repositories";
+        var artifactName = serviceName.Singularize();
+        
+        var content = ArtifactsTemplates.GenerateClassTemplate(modelNameSpace, artifactName);
+        var contentIService = ArtifactsTemplates.GenerateInterfaceTemplate(interfaceServiceNameSpace, artifactName, modelNameSpace);
+        var contentService = ArtifactsTemplates.GenerateServiceTemplate(serviceNameSpace, artifactName, modelNameSpace);
+
+        var classFilePath = Path.Combine(coreProjectPath, serviceName, "Models", $"{artifactName}.cs");
+        var serviceInterfaceFilePath = Path.Combine(coreProjectPath, serviceName, "Services", $"I{artifactName}Service.cs");
+        var serviceFilePath = Path.Combine(coreProjectPath, serviceName, "Services", "Impl", $"{artifactName}Service.cs");
+        
+
+        File.WriteAllText(classFilePath, content);
+        File.WriteAllText(serviceInterfaceFilePath, contentIService);
+        File.WriteAllText(serviceFilePath, contentService);
     }
     
 }
