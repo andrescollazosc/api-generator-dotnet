@@ -31,6 +31,13 @@ artifacts/
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
+# Ignore build folders
+bin/
+obj/
+
+**/bin/
+**/obj/
+
 # NuGet Packages
 *.nupkg
 # NuGet Symbol Packages
